@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>LUMINA - Revision Marathon</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#dae2fd",
+                        "on-secondary": "#003824",
+                        "outline": "#908fa0",
+                        "on-error": "#690005",
+                        "on-primary": "#1000a9",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-fixed": "#ffdadb",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#8083ff",
+                        "on-tertiary-fixed": "#40000d",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "secondary": "#4edea3",
+                        "surface-tint": "#c0c1ff",
+                        "on-secondary-fixed": "#002113",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-bright": "#31394d",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-container": "#00311f",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#171f33",
+                        "error-container": "#93000a",
+                        "on-surface": "#dae2fd",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface-container-low": "#131b2e",
+                        "surface-dim": "#0b1326",
+                        "error": "#ffb4ab",
+                        "primary": "#c0c1ff",
+                        "on-tertiary-container": "#5b0017",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#ffb2b7",
+                        "on-tertiary": "#67001b",
+                        "on-primary-fixed": "#07006c",
+                        "surface": "#0b1326",
+                        "on-surface-variant": "#c7c4d7",
+                        "secondary-container": "#00a572",
+                        "tertiary-container": "#ff516a",
+                        "outline-variant": "#464554",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "background": "#0b1326",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-primary": "#494bd6",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "40px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "container-max": "1200px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Sora"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "display-lg-mobile": ["Sora"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .card-stack {
+            perspective: 1000px;
+        }
+
+        .revision-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            touch-action: none;
+        }
+
+        .revision-card.swiped-right {
+            transform: translateX(150%) rotate(30deg) !important;
+            opacity: 0;
+        }
+
+        .revision-card.swiped-left {
+            transform: translateX(-150%) rotate(-30deg) !important;
+            opacity: 0;
+        }
+
+        .glass-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .timer-glow {
+            text-shadow: 0 0 10px rgba(192, 193, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-background font-body-md overflow-hidden h-screen flex flex-col selection:bg-primary/30">
+    <!-- Top Navigation Bar (JSON Anchor Mapping) -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-md py-sm">
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary"
+                data-icon="bolt">bolt</span><span
+                class="font-headline-sm text-headline-sm tracking-tight text-primary uppercase">LUMINA</span></div>
+        <div class="flex items-center gap-md">
+            <!-- Timer Component -->
+            <div
+                class="bg-surface-container-highest px-3 py-1 rounded-full border border-white/10 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[14px] text-secondary"
+                    style="font-variation-settings: 'FILL' 1;">timer</span>
+                <span class="font-label-md text-label-md text-secondary tracking-widest timer-glow"
+                    id="marathon-timer">15:12</span>
+            </div>
+            <button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity"
+                data-icon="close" onclick="window.history.back()">close</button>
+        </div>
+    </header>
+    <!-- Main Revision Canvas -->
+    <main class="flex-1 flex flex-col items-center justify-center p-md relative mt-16 mb-20 overflow-hidden">
+        <!-- Session Progress -->
+        <div class="w-full max-w-[400px] mb-lg px-xs">
+            <div class="flex justify-between items-end mb-sm">
+                <div>
+                    <span class="font-headline-sm text-headline-sm block">Marathon Mode</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant">24/50 Concepts Mastered</span>
+                </div>
+                <span class="font-label-md text-label-md text-primary">48%</span>
+            </div>
+            <div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+                <div class="h-full bg-secondary transition-all duration-500" style="width: 48%"></div>
+            </div>
+        </div>
+        <!-- High-Intensity Card Stack -->
+        <div class="relative w-full max-w-[400px] aspect-[3/4] card-stack" id="card-container">
+            <!-- Card 3 (Bottom) -->
+            <div
+                class="absolute inset-0 bg-surface-container-low rounded-xl border border-white/5 shadow-2xl scale-90 translate-y-8 z-0 opacity-40 blur-[1px]">
+            </div>
+            <!-- Card 2 (Middle) -->
+            <div
+                class="absolute inset-0 bg-surface-container-high rounded-xl border border-white/10 shadow-2xl scale-95 translate-y-4 z-10 opacity-80">
+            </div>
+            <!-- Card 1 (Active) -->
+            <div class="revision-card absolute inset-0 bg-surface-container-highest rounded-xl border border-white/20 shadow-2xl z-20 flex flex-col p-lg cursor-grab active:cursor-grabbing"
+                id="active-card">
+                <div class="flex-1 flex flex-col justify-center">
+                    <div
+                        class="bg-primary/10 self-start px-2 py-0.5 rounded text-[10px] font-bold text-primary tracking-widest uppercase mb-md">
+                        Advanced Algorithms</div>
+                    <h2 class="font-headline-md text-headline-md leading-tight mb-md">Explain the Big O complexity of a
+                        binary search algorithm.</h2>
+                    <p class="font-body-md text-on-surface-variant">How does the search space decrease per iteration,
+                        and what is the mathematical expression for the worst-case scenario?</p>
+                </div>
+                <!-- Card Flip Hint -->
+                <div class="mt-auto pt-md border-t border-white/5 flex justify-center">
+                    <button
+                        class="flex items-center gap-2 text-on-surface-variant/60 hover:text-primary transition-colors py-2"
+                        onclick="flipCard()">
+                        <span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                        <span class="font-label-md text-label-md">TAP TO SEE ANSWER</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Atmospheric Micro-interactions background -->
+        <div class="absolute inset-0 -z-10 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary rounded-full blur-[120px]"></div>
+        </div>
+    </main>
+    <!-- Controls (Task Focused Action Bar) -->
+    <div class="fixed bottom-0 left-0 w-full z-50">
+        <!-- Card Action Buttons (Shifted up slightly) -->
+        <div class="px-md pb-md bg-gradient-to-t from-background to-transparent">
+            <div class="max-w-[400px] mx-auto flex gap-md">
+                <button
+                    class="flex-1 bg-surface-container-highest border border-white/10 text-on-surface-variant font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container hover:border-error transition-all active:scale-95"
+                    onclick="swipeCard('left')">
+                    <span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                    REVIEW LATER
+                </button>
+                <button
+                    class="flex-1 bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:brightness-110 transition-all active:scale-95"
+                    onclick="swipeCard('right')">
+                    <span class="material-symbols-outlined" data-icon="check_circle"
+                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    GOT IT
+                </button>
+            </div>
+        </div>
+
+        <!-- Standard Bottom Navigation -->
+        <nav
+            class="bg-surface-container/95 backdrop-blur-xl border-t border-white/10 px-md py-3 flex justify-around items-center">
+            <button
+                class="flex flex-col items-center gap-1 group text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">auto_stories</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider">Learn</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 group text-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider">Saved</span>
+            </button>
+            <button
+                class="flex flex-col items-center gap-1 group text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider">Progress</span>
+            </button>
+        </nav>
+    </div>
+    <!-- Script for Micro-interactions -->
+    <script>
+        const card = document.getElementById('active-card');
+        const timerElement = document.getElementById('marathon-timer');
+        let seconds = 765; // 12:45
+
+        // Simple timer increment
+        setInterval(() => {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerElement.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+
+        function flipCard() {
+            card.style.transform = 'rotateY(10deg) scale(1.02)';
+            setTimeout(() => {
+                card.innerHTML = `
+                    <div class="flex-1 flex flex-col justify-center">
+                        <div class="bg-secondary/10 self-start px-2 py-0.5 rounded text-[10px] font-bold text-secondary tracking-widest uppercase mb-md">THE ANSWER</div>
+                        <h2 class="font-headline-md text-headline-md text-secondary leading-tight mb-md">O(log n)</h2>
+                        <div class="pl-4 border-l-4 border-primary bg-primary/5 p-4 rounded-r-lg">
+                            <p class="font-body-md text-on-surface-variant italic">Binary search operates by repeatedly dividing the search interval in half. In the worst case, the algorithm takes logarithmic time relative to the number of elements.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-md border-t border-white/5 flex justify-center">
+                        <span class="font-label-md text-label-md text-on-surface-variant/40">SWIPE OR USE BUTTONS TO CONTINUE</span>
+                    </div>
+                `;
+                card.style.transform = 'rotateY(0deg) scale(1)';
+            }, 150);
+        }
+
+        function swipeCard(direction) {
+            if (direction === 'right') {
+                card.classList.add('swiped-right');
+            } else {
+                card.classList.add('swiped-left');
+            }
+
+            // In a real app, we'd inject a new card here.
+            // For the demo, we reset after a moment.
+            setTimeout(() => {
+                card.classList.remove('swiped-right', 'swiped-left');
+                // Reset card content for the demo loop
+                card.innerHTML = `
+                    <div class="flex-1 flex flex-col justify-center">
+                        <div class="bg-primary/10 self-start px-2 py-0.5 rounded text-[10px] font-bold text-primary tracking-widest uppercase mb-md">Data Structures</div>
+                        <h2 class="font-headline-md text-headline-md leading-tight mb-md">What is the difference between a Stack and a Queue?</h2>
+                        <p class="font-body-md text-on-surface-variant">Explain LIFO and FIFO principles with a real-world memory management example.</p>
+                    </div>
+                    <div class="mt-auto pt-md border-t border-white/5 flex justify-center">
+                        <button class="flex items-center gap-2 text-on-surface-variant/60 hover:text-primary transition-colors py-2" onclick="flipCard()">
+                            <span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                            <span class="font-label-md text-label-md">TAP TO SEE ANSWER</span>
+                        </button>
+                    </div>
+                `;
+            }, 500);
+        }
+
+        // Basic touch drag simulation for visual feedback
+        let startX = 0;
+        card.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+        card.addEventListener('touchmove', (e) => {
+            const currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+            card.style.transform = `translateX(${diff}px) rotate(${diff / 20}deg)`;
+        });
+        card.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = endX - startX;
+            if (Math.abs(diff) > 100) {
+                swipeCard(diff > 0 ? 'right' : 'left');
+            } else {
+                card.style.transform = 'translateX(0) rotate(0)';
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

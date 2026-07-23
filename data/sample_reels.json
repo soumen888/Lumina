@@ -1,0 +1,24 @@
+[
+  {
+    "moduleId": "c_prog_sample_01",
+    "sectionTitle": "UNIT 1 • GETTING STARTED",
+    "conceptTitle": "Variables and Data Types in C",
+    "coreConcept": "A variable in C is a named memory location used to store values. Each variable has a specific data type like int, float, or char that determines the size and layout of memory allocated.",
+    "examples": [
+      {
+        "code": "int age = 25;\nfloat score = 98.5;\nchar grade = 'A';",
+        "explanation": "Declaring integer, floating-point, and character variables in C."
+      }
+    ],
+    "masteryCheck": {
+      "question": "Which keyword is used to declare an integer variable in C?",
+      "options": ["var", "int", "integer", "num"],
+      "correctIndex": 1,
+      "explanation": "'int' is the standard C keyword used to declare integer data types."
+    },
+    "flashcard": {
+      "front": "What does a data type determine in C?",
+      "back": "It determines the type, size, and layout of memory allocated for a variable."
+    }
+  }
+]

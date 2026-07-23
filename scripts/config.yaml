@@ -1,0 +1,49 @@
+# =============================================================================
+# Lumina Pipeline Configuration
+# =============================================================================
+# Fill in the values below to configure the pipeline for your own content.
+# All scripts in /scripts read from this file automatically.
+# =============================================================================
+
+# --- 1. YOUR SUBJECT ---
+# The subject area of your content (used to tag every reel/MCQ in Firestore)
+segment: "Computer"          # Broad category  (e.g. "Computer", "Science", "Math")
+subject: "C Programming"     # Specific subject (e.g. "C Programming", "Physics", "History")
+
+# --- 2. PDF SOURCE ---
+# Place your PDF inside the /data folder and set the filename here.
+# Page numbers are 0-indexed (page 1 of the PDF = index 0)
+pdf_filename: "my_textbook.pdf"
+start_page: 0
+end_page:   50
+
+# --- 3. UNIT / CHAPTER ---
+# The chapter or unit title that will be tagged on every reel produced in this run.
+# Change this before running each new chapter.
+unit_title: "UNIT 1 • INTRODUCTION"
+
+# --- 4. ORDERING ---
+# The orderIndex where this batch of reels starts.
+# Set this to the last orderIndex of the previous unit + 1 to keep the feed sorted.
+start_order_index: 0
+
+# --- 5. AI MODEL ---
+# Google Gemini model to use for content generation.
+# Options: "gemini-1.5-flash", "gemini-1.5-pro", "models/gemma-4-31b-it"
+model_name: "gemini-1.5-flash"
+
+# --- 6. FIRESTORE COLLECTIONS ---
+# The Firestore collection names where data will be uploaded.
+reels_collection: "reels"
+mcqs_collection:  "mcqs"
+
+# --- 7. CHUNKING ---
+# How many pages to send to the AI at a time. 
+# Smaller = more API calls but more reliable. Larger = fewer calls but may hit token limits.
+chunk_size: 5
+chunk_overlap: 1
+
+# --- 8. RESUME ---
+# If the pipeline was interrupted, set this to the last successfully processed chunk number
+# to resume without reprocessing earlier chunks. Set to 1 to start fresh.
+start_chunk: 1

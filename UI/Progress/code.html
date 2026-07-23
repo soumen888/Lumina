@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Lumina - Intellectual Growth</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&amp;family=Inter:wght@100..900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#0b1326",
+                        "surface-container": "#171f33",
+                        "primary-container": "#8083ff",
+                        "on-secondary-fixed": "#002113",
+                        "on-secondary-container": "#00311f",
+                        "secondary-container": "#00a572",
+                        "secondary": "#4edea3",
+                        "surface-container-lowest": "#060e20",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed": "#6ffbbe",
+                        "outline": "#908fa0",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-tertiary-fixed": "#40000d",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary-container": "#5b0017",
+                        "on-surface": "#dae2fd",
+                        "surface": "#0b1326",
+                        "on-surface-variant": "#c7c4d7",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "tertiary": "#ffb2b7",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "primary": "#c0c1ff",
+                        "on-tertiary": "#67001b",
+                        "inverse-primary": "#494bd6",
+                        "tertiary-container": "#ff516a",
+                        "surface-container-highest": "#2d3449",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "surface-dim": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "on-primary-container": "#0d0096",
+                        "on-secondary": "#003824",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-primary-fixed": "#07006c",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-variant": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dae2fd",
+                        "on-background": "#dae2fd",
+                        "surface-container-low": "#131b2e",
+                        "outline-variant": "#464554",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-primary": "#1000a9",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed-variant": "#005236"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "20px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Sora"],
+                        "display-lg-mobile": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Sora"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-card {
+            background: rgba(23, 31, 51, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(192, 193, 255, 0.3);
+            background: rgba(23, 31, 51, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .beveled-edge {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .progress-bar-bg {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-body-md pb-32">
+    <!-- Top Navigation Bar (Shared Component: TopAppBar) -->
+    <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
+        <div class="flex justify-between items-center px-lg h-16 max-w-container-max mx-auto">
+            <div class="flex items-center gap-md"><span class="material-symbols-outlined text-primary font-bold"
+                    style="font-variation-settings: &quot;FILL&quot; 1;">bolt</span><span
+                    class="text-primary font-bold tracking-tight font-headline-sm">LUMINA</span></div>
+            <div class="flex items-center gap-md"><span class="material-symbols-outlined text-primary font-bold"
+                    style="font-variation-settings: &quot;FILL&quot; 1;">bolt</span><span
+                    class="text-primary font-bold tracking-tight font-headline-sm">LUMINA</span></div>
+        </div>
+    </nav>
+    <main class="mt-20 px-md max-w-container-max mx-auto space-y-lg">
+        <!-- Welcome Header & Search -->
+        <header class="pt-md space-y-md">
+            <div class="flex justify-between items-end">
+                <div class="space-y-xs">
+                    <p class="text-on-surface-variant font-label-md uppercase tracking-widest" style="opacity: 1;">08:14
+                        AM • SESSION ACTIVE</p>
+                    <h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Good
+                        morning, Scholar</h1>
+                </div>
+                <div
+                    class="flex items-center gap-xs bg-surface-container-high px-md py-sm rounded-full border border-white/5">
+                    <span class="material-symbols-outlined text-secondary text-lg" data-icon="local_fire_department"
+                        style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                    <span class="font-headline-sm text-secondary">12</span>
+                </div>
+            </div>
+            <!-- Search Bar -->
+            <div class="relative group">
+                <span
+                    class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors"
+                    data-icon="search">search</span>
+                <input
+                    class="w-full bg-surface-container border border-outline-variant focus:border-primary-container focus:ring-0 rounded-xl pl-12 pr-md py-md text-on-surface placeholder:text-outline transition-all"
+                    placeholder="Search topics, concepts, or formulas..." type="text">
+            </div>
+        </header>
+        <!-- Subject Grid (2x2) -->
+        <section class="space-y-md">
+            <div class="flex items-center justify-between">
+                <h2 class="font-headline-sm text-on-surface">Core Disciplines</h2>
+
+            </div>
+            <div class="grid grid-cols-2 gap-md">
+                <!-- English Card -->
+                <div class="glass-card rounded-xl p-lg flex flex-col justify-between h-52 beveled-edge relative overflow-hidden group"
+                    style="transform: scale(1);">
+                    <div class="z-10">
+                        <span class="material-symbols-outlined text-primary-container mb-md block text-3xl"
+                            data-icon="menu_book">menu_book</span>
+                        <h3 class="font-headline-sm text-on-surface">English</h3>
+                        <p class="text-on-surface-variant text-label-md mt-xs">Linguistics &amp; Rhetoric</p>
+                    </div>
+                    <div class="z-10 space-y-sm">
+                        <div class="flex justify-between items-center text-label-md">
+                            <span class="text-on-surface-variant">Concepts Mastered</span>
+                            <span class="text-secondary">65%</span>
+                        </div>
+                        <div class="w-full h-1 progress-bar-bg rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- GK Card -->
+                <div class="glass-card rounded-xl p-lg flex flex-col justify-between h-52 beveled-edge relative overflow-hidden group"
+                    style="transform: scale(1);">
+                    <div class="z-10">
+                        <span class="material-symbols-outlined text-primary-container mb-md block text-3xl"
+                            data-icon="public">public</span>
+                        <h3 class="font-headline-sm text-on-surface">GK</h3>
+                        <p class="text-on-surface-variant text-label-md mt-xs">Global Dynamics</p>
+                    </div>
+                    <div class="z-10 space-y-sm">
+                        <div class="flex justify-between items-center text-label-md">
+                            <span class="text-on-surface-variant">Concepts Mastered</span>
+                            <span class="text-secondary">42%</span>
+                        </div>
+                        <div class="w-full h-1 progress-bar-bg rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary rounded-full" style="width: 42%"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Computer Card -->
+
+                <!-- Aptitude Card -->
+
+                <!-- Computer Card -->
+                <div class="glass-card rounded-xl p-lg flex flex-col justify-between h-52 beveled-edge relative overflow-hidden group"
+                    style="transform: scale(1);">
+                    <div class="z-10">
+                        <span class="material-symbols-outlined text-primary-container mb-md block text-3xl"
+                            data-icon="terminal">terminal</span>
+                        <h3 class="font-headline-sm text-on-surface">Computer</h3>
+                        <p class="text-on-surface-variant text-label-md mt-xs">IT Fundamentals</p>
+                    </div>
+                    <div class="z-10 space-y-sm">
+                        <div class="flex justify-between items-center text-label-md">
+                            <span class="text-on-surface-variant">Concepts Mastered</span>
+                            <span class="text-secondary">55%</span>
+                        </div>
+                        <div class="w-full h-1 progress-bar-bg rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary rounded-full" style="width: 55%"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aptitude Card -->
+                <div class="glass-card rounded-xl p-lg flex flex-col justify-between h-52 beveled-edge relative overflow-hidden group"
+                    style="transform: scale(1);">
+                    <div class="z-10">
+                        <span class="material-symbols-outlined text-primary-container mb-md block text-3xl"
+                            data-icon="functions">functions</span>
+                        <h3 class="font-headline-sm text-on-surface">Aptitude</h3>
+                        <p class="text-on-surface-variant text-label-md mt-xs">Logic &amp; Reasoning</p>
+                    </div>
+                    <div class="z-10 space-y-sm">
+                        <div class="flex justify-between items-center text-label-md">
+                            <span class="text-on-surface-variant">Concepts Mastered</span>
+                            <span class="text-secondary">30%</span>
+                        </div>
+                        <div class="w-full h-1 progress-bar-bg rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Actions & Recently Saved -->
+        <section class="space-y-md">
+
+            <div class="flex gap-md overflow-x-auto custom-scrollbar pb-md">
+                <!-- Revision Marathon Entry -->
+
+                <!-- Recently Saved Reels -->
+                <div class="flex gap-sm">
+
+
+
+                </div>
+            </div>
+        </section>
+        <!-- Daily Insight Card -->
+        <section class="glass-card rounded-xl p-lg border-l-4 border-l-primary-container">
+            <div class="flex items-start gap-md">
+                <span class="material-symbols-outlined text-primary-container" data-icon="lightbulb">lightbulb</span>
+                <div class="space-y-xs">
+                    <h4 class="font-headline-sm text-on-surface">Did you know?</h4>
+                    <p class="text-on-surface-variant text-body-sm italic">The "Fermi Paradox" explores the
+                        contradiction between the high probability of extraterrestrial life and the lack of evidence for
+                        it.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Bottom Navigation (Shared Component: BottomNavBar) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 bg-surface-container/90 backdrop-blur-xl h-20 pb-safe px-md flex justify-around items-center border-t border-white/5">
+        <a class="flex flex-col items-center justify-center active:scale-90 transition-transform duration-150 text-on-surface-variant hover:text-primary"
+            href="#">
+            <span class="material-symbols-outlined mb-1" data-icon="auto_stories">auto_stories</span>
+            <span class="font-label-md">Learn</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform duration-150"
+            href="#">
+            <span class="material-symbols-outlined mb-1" data-icon="bookmark">bookmark</span>
+            <span class="font-label-md">Saved</span>
+        </a>
+        <a class="flex flex-col items-center justify-center active:scale-90 transition-transform duration-150 text-secondary font-bold"
+            href="#">
+            <span class="material-symbols-outlined mb-1" data-icon="analytics"
+                style="font-variation-settings: 'FILL' 1;">analytics</span>
+            <span class="font-label-md">Progress</span>
+        </a>
+    </nav>
+    <script>
+        // Micro-interactions for card hover effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Atmospheric text flicker for the status label
+        const statusLabel = document.querySelector('.tracking-widest');
+        setInterval(() => {
+            statusLabel.style.opacity = '0.7';
+            setTimeout(() => {
+                statusLabel.style.opacity = '1';
+            }, 50);
+        }, 5000);
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>The Modulus Operator - Learning Reel</title>
+    <!-- SORA Font from Obsidian Scholar Design System -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        surface: '#0b1326',
+                        'surface-bright': '#31394d',
+                        'surface-low': '#131b2e',
+                        accent: '#6366f1', // custom_color from Design System
+                    },
+                    fontFamily: {
+                        sans: ['Sora', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'custom': '8px', // ROUND_EIGHT from Design System
+                    }
+                }
+            }
+        }
+    </script>
+    <style data-purpose="custom-effects">
+        body {
+            background-color: #0b1326;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism Effect for the Code Box */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            position: relative;
+        }
+
+        /* Subtle Inner Glow */
+        .glass-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Aura / Glow Effect behind the code box */
+        .aura-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        /* Syntax Highlighting Colors */
+        .token-keyword {
+            color: #c678dd;
+        }
+
+        /* violet/purple */
+        .token-variable {
+            color: #e06c75;
+        }
+
+        /* red-ish/coral */
+        .token-operator {
+            color: #56b6c2;
+        }
+
+        /* cyan */
+        .token-number {
+            color: #d19a66;
+        }
+
+        /* orange */
+        .token-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .token-text {
+            color: #abb2bf;
+        }
+    </style>
+</head>
+
+<body class="font-sans h-screen flex flex-col overflow-hidden">
+    <!-- BEGIN: TopNavigation -->
+    <header class="flex items-center justify-between px-6 py-4 pt-8" data-purpose="navigation-bar">
+        <button aria-label="Go back" class="text-white hover:opacity-70 transition-opacity">
+            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+        </button>
+        <div class="flex items-center gap-2">
+            <svg class="text-accent" fill="currentColor" height="18" viewBox="0 0 24 24" width="18"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            <span class="font-bold tracking-widest text-sm">C PROGRAMMING</span>
+        </div>
+        <div class="flex items-center gap-5">
+            <button aria-label="Toggle sound" class="text-white hover:opacity-70">
+                <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+            </button>
+            <button aria-label="Bookmark" class="text-white hover:opacity-70">
+                <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <!-- END: TopNavigation -->
+    <!-- BEGIN: MainContent -->
+    <main class="flex-grow flex flex-col items-center justify-center px-8 text-center" data-purpose="learning-content">
+        <section class="mb-12">
+            <p class="text-gray-400 text-xs tracking-widest uppercase mb-4" data-purpose="subtitle">
+                Unit 1 • Getting Started
+            </p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-white" data-purpose="title">
+                The Modulus Operator
+            </h1>
+            <p class="text-gray-300 text-lg leading-relaxed max-w-sm mx-auto" data-purpose="description">
+                The modulus operator (%) returns the remainder of an integer division. It is primarily used for
+                extracting digits from numbers or checking for even/odd properties.
+            </p>
+        </section>
+        <!-- BEGIN: CodeSnippetContainer -->
+        <div class="relative w-full max-w-md mx-auto group" data-purpose="highlighted-code-snippet">
+            <!-- Glow effect behind the box -->
+            <div class="aura-glow"></div>
+            <!-- Glassmorphism Code Box -->
+            <div class="glass-box rounded-custom p-6 text-left overflow-hidden">
+                <!-- Language Label -->
+
+                <!-- Code Content -->
+                <code class="block font-mono text-base md:text-lg leading-relaxed">
+<span class="token-keyword">int</span>
+<span class="token-variable">rem</span>
+<span class="token-operator">=</span>
+<span class="token-number">10</span>
+<span class="token-operator">%</span>
+<span class="token-number">3</span><span class="token-text">;</span>
+<span class="token-comment">// Result is 1</span>
+</code>
+            </div>
+        </div>
+        <!-- END: CodeSnippetContainer -->
+    </main>
+    <!-- END: MainContent -->
+    <!-- BEGIN: BottomNavigation -->
+    <footer class="p-8 pb-12" data-purpose="footer-actions">
+        <div class="w-full h-[1px] bg-white/10 mb-8"></div>
+        <button
+            class="w-full flex items-center justify-center gap-3 py-4 rounded-custom bg-transparent border border-white/5 hover:bg-white/5 transition-colors group"
+            data-purpose="mastery-check-button">
+            <svg class="text-gray-400 group-hover:text-accent transition-colors" fill="none" height="22"
+                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            <span class="text-gray-200 font-semibold tracking-widest text-sm uppercase">Take Mastery Check</span>
+        </button>
+    </footer>
+    <!-- END: BottomNavigation -->
+
+
+</body>
+
+</html>
