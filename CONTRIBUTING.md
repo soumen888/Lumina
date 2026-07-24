@@ -18,19 +18,21 @@ This isn't just another AI wrapper. I want to build a genuinely useful learning 
 
 ---
 
-## 🙌 Who We're Looking For
+## 🧭 What We're Building & Exploring Together
 
-You don't have to be an expert. If you're curious and willing to learn, there's a place for you here.
+Lumina is an open community project. Whether you have ideas for new learning features, code improvements, or UI refinements, all contributions and discussions are welcome.
 
-| Area | What's Needed |
+Here are the key areas on our collaborative roadmap:
+
+| Area | Ideas & Focus |
 | :--- | :--- |
-| 📱 **Android / Flutter (Dart)** | UI polish, animations, scroll physics, new screens |
-| 🔥 **Firebase Architecture** | Firestore rules, query optimization, auth flows |
-| 🤖 **AI Prompt Engineering** | Improving reel quality, content extraction accuracy |
-| 🐍 **Python / Backend** | Stateless pipeline design, CLI tooling, Cloud Functions |
-| 🧠 **Learning Science** | Spaced repetition (SM-2), adaptive scheduling, retention research |
-| 🧪 **Testing & QA** | Widget tests, integration tests, accessibility audits |
-| 📖 **Documentation** | Tutorials, guides, improving this very file |
+| 📱 **Android / Flutter (UI/UX)** | Smooth reel scrolling physics, Obsidian Scholar dark theme enhancements, active recall UI |
+| 🔥 **Firebase & Data Flow** | Firestore rules, caching strategies, client-side data streaming |
+| 🤖 **AI Prompting & Pipeline** | Improving chunking & LLM prompt accuracy for generating reel cards |
+| 🐍 **Backend & Automation** | Stateless script pipeline, CLI tools, automated ingestion workflows |
+| 🧠 **Learning Science** | Spaced repetition algorithms (SM-2), adaptive revision schedules |
+| 🧪 **Quality & Accessibility** | Widget tests, accessibility (a11y) improvements, voice narration polish |
+| 📖 **Guides & Docs** | Setup tutorials, developer guides, documentation improvements |
 
 ---
 
