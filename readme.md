@@ -7,6 +7,15 @@
 [![Google Gemini API](https://img.shields.io/badge/Google_Gemini_API-Gemma--4--31B--IT-4285F4?logo=google&logoColor=white)](https://ai.google.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore_&_Admin_SDK-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
 [![License](https://img.shields.io/badge/License-Custom_Non--Commercial-orange.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/soumen888/Lumina/blob/main/CONTRIBUTING.md)
+[![Issues](https://img.shields.io/github/issues/soumen888/Lumina)](https://github.com/soumen888/Lumina/issues)
+
+> **The idea is simple:**
+> 1. Upload a textbook, syllabus, notes, or any study material.
+> 2. AI breaks it down into reel-sized learning cards.
+> 3. Instead of doomscrolling, you scroll through concepts, formulas, stories, examples, and quick revisions.
+>
+> **The goal:** Make learning as engaging as social media — while actually helping you remember what you study.
 
 Lumina is an enterprise-grade, cognitive learning platform that transforms dense, static academic literature (textbooks, research PDFs, exam syllabi) into high-engagement, vertical micro-learning feeds ("Reels"), interactive active-recall flashcards, and adaptive AI-generated assessment suites.
 
@@ -14,8 +23,24 @@ By marrying the psychological hooks of short-form social media feeds (TikTok/Ins
 
 ---
 
+## 🤝 Contributing
+
+This project is open to contributions. Whether you're into Flutter, Firebase, AI prompting, learning science, or just want to fix a typo — there's a place for you here.
+
+**Current areas needing help most:**
+- 📱 Flutter UI polish & animations
+- 🧠 Spaced repetition (SM-2) engine implementation
+- 🤖 AI prompt engineering for better reel quality
+- 🐍 Stateless backend pipeline architecture
+- 📖 Documentation & onboarding improvements
+
+👉 **[Read CONTRIBUTING.md to get started](CONTRIBUTING.md)** · [Open an Issue](https://github.com/soumen888/Lumina/issues/new/choose)
+
+---
+
 ## 📑 Table of Contents
 
+- [Contributing](#-contributing)
 - [1. Executive Overview \& Problem Statement](#1-executive-overview--problem-statement)
 - [2. System Architecture](#2-system-architecture)
   - [2.1 High-Level Data Pipeline Architecture](#21-high-level-data-pipeline-architecture)
@@ -326,25 +351,49 @@ Before Flutter implementation, interfaces are prototyped in raw **HTML5**, **CSS
 ```text
 Lumina-Public/
 ├── .env.example                     # Environment variables configuration template
-├── .gitignore                        # Git exclusion rules for secrets, builds, & raw data
+├── .gitignore                        # Git exclusion rules for secrets, builds & raw data
 ├── readme.md                         # Comprehensive technical documentation
+├── CONTRIBUTING.md                   # Contributor guide & setup instructions
+├── CODE_OF_CONDUCT.md                # Community standards
+├── SECURITY.md                       # Credential leak protocol & vulnerability reporting
+├── CHANGELOG.md                      # Version history
+├── LICENSE                           # Custom Non-Commercial License
 ├── serviceAccountKey.example.json   # Firebase Admin SDK credentials template
+├── .github/                          # GitHub configuration
+│   ├── CODEOWNERS                    # Auto-assigns PR reviews to maintainer
+│   ├── workflows/
+│   │   └── flutter_ci.yml            # CI: flutter analyze + test on every PR
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md             # Structured bug report template
+│   │   └── feature_request.md        # Feature request template
+│   └── pull_request_template.md      # PR review checklist
 ├── data/                             # Sample schemas and public test datasets
 │   └── sample_reels.json             # Demo reels payload for offline testing
 ├── UI/                               # HTML5 / Tailwind CSS rapid prototyping suite
-│   ├── DESIGN.md                     # Obsidian Scholar design system documentation
-│   ├── index.html                    # HTML prototype: Learn Feed Screen
-│   ├── quiz.html                     # HTML prototype: Quiz & Assessment Hub
-│   ├── progress.html                 # HTML prototype: User Mastery Analytics
-│   └── saved.html                    # HTML prototype: Bookmarked Reels & Revision
+│   ├── README.md                     # Design system overview & how to use prototypes
+│   ├── Learn/
+│   │   ├── code.html                 # HTML prototype: Learn Feed Screen
+│   │   ├── DESIGN.md                 # Obsidian Scholar design tokens
+│   │   └── screen.png                # Screenshot preview
+│   ├── Quiz/
+│   │   ├── code.html                 # HTML prototype: Quiz & Assessment Hub
+│   │   ├── DESIGN.md
+│   │   └── screen.png
+│   ├── Progress/
+│   │   ├── code.html                 # HTML prototype: User Mastery Analytics
+│   │   ├── DESIGN.md
+│   │   └── screen.png
+│   └── Saved/
+│       ├── code.html                 # HTML prototype: Bookmarked Reels & Revision
+│       ├── DESIGN.md
+│       └── screen.png
 ├── scripts/                          # Python backend extraction & AI ingestion pipeline
-│   ├── extract_raw_text.py           # PyPDF2 text extraction engine
-│   ├── let_Us_C.py                   # C Programming Gemini extraction pipeline
-│   ├── arihant_mcqs.py               # Objective Computer Awareness MCQ generator
-│   ├── New_Reels.py                  # Reel batch generator utility
-│   ├── Backup Upload.py              # Offline JSON snapshot restoration script
-│   ├── MCQ_Upload.py                 # Batch MCQ uploader to Cloud Firestore
-│   ├── upload_new_reels.py           # Batch Reels uploader to Cloud Firestore
+│   ├── config.yaml                   # ⚙️ Central pipeline config (edit this first!)
+│   ├── Extract.py                    # PyPDF2 text extraction engine
+│   ├── generate_reels.py             # Gemini AI → structured Reel JSON generator
+│   ├── generate_mcqs.py              # Gemini AI → MCQ question generator
+│   ├── upload_reels.py               # Batch Reels uploader to Cloud Firestore
+│   ├── upload_mcqs.py                # Batch MCQ uploader to Cloud Firestore
 │   └── utils/                        # Maintenance, audit & diagnostic scripts
 │       ├── cleanup_duplicate_reels.py# Deduplication audit tool for Firestore
 │       ├── diagnose_reels.py         # Field index integrity & schema validator
@@ -352,7 +401,7 @@ Lumina-Public/
 │       ├── fix_unit10_firebase.py    # Live Firestore document field patcher
 │       ├── clear_firestore.py        # Emergency database collection reset utility
 │       └── download_collection.py    # Firestore collection downloader & backup tool
-└── lumina/                           # Core Flutter Cross-Platform Mobile Application
+└── lumina/                           # Core Flutter Android Mobile Application
     ├── pubspec.yaml                  # Flutter package dependencies & asset definitions
     ├── firebase.json                 # Firebase CLI configuration
     ├── lib/                          # Dart application source code
@@ -372,11 +421,7 @@ Lumina-Public/
     │   └── models/
     │       ├── reel_content.dart     # Reel Data Model & JSON deserializer
     │       └── quiz_question.dart    # MCQ Data Model & JSON deserializer
-    ├── android/                      # Native Android build workspace
-    ├── ios/                          # Native iOS build workspace
-    ├── macos/                        # Native macOS desktop workspace
-    ├── web/                          # Web application target platform
-    └── windows/                      # Native Windows desktop workspace
+    └── android/                      # Native Android build workspace
 ```
 
 ---
@@ -406,22 +451,39 @@ Ensure you have the following installed on your host machine:
 
 3. **Install dependencies**:
    ```bash
-   pip install google-generativeai firebase-admin PyPDF2 python-dotenv
+   pip install google-generativeai firebase-admin PyPDF2 python-dotenv pyyaml
    ```
 
 4. **Configure Environment Credentials**:
-   Copy `.env.example` to `.env` in the root directory and add your Google Gemini API key:
+   Copy `.env.example` to `.env` in the root directory and add your keys:
    ```bash
    cp ../.env.example ../.env
    ```
    Edit `.env`:
    ```env
    GEMINI_API_KEY=your_gemini_api_key_here
+   FIREBASE_PROJECT_ID=your_firebase_project_id
+   GOOGLE_APPLICATION_CREDENTIALS=serviceAccountKey.json
    ```
 
-5. **Execute Extraction Pipeline** (Optional, requires PDF source):
+5. **Configure the Pipeline** (the most important step):
+   Open `scripts/config.yaml` and fill in your details:
+   ```yaml
+   subject: "Your Subject"       # e.g. "Physics", "C Programming"
+   pdf_filename: "my_notes.pdf"  # Place the PDF in data/ first
+   start_page: 0
+   end_page: 50
+   unit_title: "UNIT 1 • INTRODUCTION"
+   model_name: "gemini-1.5-flash"
+   ```
+   Every script reads from `config.yaml` automatically — you only need to edit one file.
+
+6. **Run the Extraction Pipeline**:
    ```bash
-   python let_Us_C.py
+   python generate_reels.py   # Generate learning reels from your PDF
+   python generate_mcqs.py    # Generate MCQ questions from your PDF
+   python upload_reels.py     # Upload reels to Firestore
+   python upload_mcqs.py      # Upload MCQs to Firestore
    ```
 
 ### 8.3 Flutter Mobile Application Setup
@@ -456,9 +518,11 @@ Ensure you have the following installed on your host machine:
 ## 9. Security, Secrets Management & Privacy
 
 Lumina enforces strict separation between open-source codebase structures and sensitive deployment credentials:
-- **Git Exclusion Rules**: `.env`, `serviceAccountKey.json`, and local sensitive data files inside `data/` are excluded via `.gitignore`.
-- **Public Templates**: Public repositories include `.env.example`, `serviceAccountKey.example.json`, and `data/sample_reels.json`.
+- **Git Exclusion Rules**: `.env`, `serviceAccountKey.json`, `google-services.json`, and generated data files inside `data/` are excluded via `.gitignore`.
+- **Public Templates**: The public repository includes `.env.example`, `serviceAccountKey.example.json`, and `data/sample_reels.json`.
 - **Key Rotation Protocol**: If credentials are accidentally staged, Firebase Service Account keys must be revoked in the Firebase Console and Gemini API keys rotated in Google AI Studio immediately.
+
+> See **[SECURITY.md](SECURITY.md)** for the full step-by-step credential leak response protocol and vulnerability reporting process.
 
 ---
 

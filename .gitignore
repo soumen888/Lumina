@@ -1,0 +1,62 @@
+# Root-level .gitignore for Lumina-Public
+
+# ============================================================
+# SECRETS — NEVER COMMIT THESE
+# ============================================================
+.env
+serviceAccountKey.json
+google-services.json
+GoogleService-Info.plist
+
+# ============================================================
+# PYTHON PIPELINE
+# ============================================================
+scripts/venv/
+scripts/__pycache__/
+scripts/*.pyc
+scripts/.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ============================================================
+# RAW STUDY MATERIALS (PDFs, source documents)
+# These are private/copyrighted materials — do not commit
+# ============================================================
+data/*.pdf
+data/generated_*.json
+data/raw_*.json
+data/output_*.json
+# sample_reels.json is intentionally tracked — do NOT add it here
+
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ============================================================
+# VS Code
+# ============================================================
+.vscode/settings.json
+.vscode/launch.json
+# Keep .vscode/extensions.json if you want to share recommended extensions
+
+# ============================================================
+# Python virtual environments (anywhere in the tree)
+# ============================================================
+**/venv/
+**/.venv/
+**/env/
+**/.env/
+
+# ============================================================
+# Logs & temp files
+# ============================================================
+*.log
+*.tmp
+*.bak

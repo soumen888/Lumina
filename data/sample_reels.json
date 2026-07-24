@@ -4,21 +4,68 @@
     "sectionTitle": "UNIT 1 • GETTING STARTED",
     "conceptTitle": "Variables and Data Types in C",
     "coreConcept": "A variable in C is a named memory location used to store values. Each variable has a specific data type like int, float, or char that determines the size and layout of memory allocated.",
+    "orderIndex": 1,
     "examples": [
       {
         "code": "int age = 25;\nfloat score = 98.5;\nchar grade = 'A';",
-        "explanation": "Declaring integer, floating-point, and character variables in C."
+        "explanation": "Declaring integer, floating-point, and character variables in C. Each type reserves a specific amount of memory: int (4 bytes), float (4 bytes), char (1 byte)."
       }
     ],
     "masteryCheck": {
       "question": "Which keyword is used to declare an integer variable in C?",
       "options": ["var", "int", "integer", "num"],
       "correctIndex": 1,
-      "explanation": "'int' is the standard C keyword used to declare integer data types."
+      "explanation": "'int' is the standard C keyword used to declare integer data types. It allocates 4 bytes of memory on most modern systems."
     },
     "flashcard": {
       "front": "What does a data type determine in C?",
-      "back": "It determines the type, size, and layout of memory allocated for a variable."
+      "back": "It determines the type, size, and layout of memory allocated for a variable. For example: int = 4 bytes, char = 1 byte, float = 4 bytes, double = 8 bytes."
+    }
+  },
+  {
+    "moduleId": "c_prog_sample_02",
+    "sectionTitle": "UNIT 1 • GETTING STARTED",
+    "conceptTitle": "The printf() Function",
+    "coreConcept": "printf() is the standard C output function. It prints formatted text to the console. Format specifiers like %d, %f, and %s tell printf how to display each variable's value.",
+    "orderIndex": 2,
+    "examples": [
+      {
+        "code": "#include <stdio.h>\n\nint main() {\n    int age = 20;\n    float cgpa = 8.75;\n    char name[] = \"Lumina\";\n    printf(\"Name: %s, Age: %d, CGPA: %.2f\\n\", name, age, cgpa);\n    return 0;\n}",
+        "explanation": "%s prints a string, %d prints an integer, %.2f prints a float rounded to 2 decimal places. \\n moves the cursor to the next line."
+      }
+    ],
+    "masteryCheck": {
+      "question": "Which format specifier is used to print a floating-point number in printf()?",
+      "options": ["%d", "%c", "%f", "%s"],
+      "correctIndex": 2,
+      "explanation": "%f is the format specifier for floating-point numbers. Use %.2f to limit output to 2 decimal places."
+    },
+    "flashcard": {
+      "front": "What does the format specifier %d do in printf()?",
+      "back": "It tells printf() to insert a decimal integer value at that position in the output string."
+    }
+  },
+  {
+    "moduleId": "c_prog_sample_03",
+    "sectionTitle": "UNIT 2 • CONTROL FLOW",
+    "conceptTitle": "The if-else Statement",
+    "coreConcept": "The if-else statement is C's primary decision-making construct. It evaluates a boolean condition and executes one of two code blocks depending on whether the condition is true or false.",
+    "orderIndex": 3,
+    "examples": [
+      {
+        "code": "int marks = 75;\n\nif (marks >= 60) {\n    printf(\"Pass\\n\");\n} else {\n    printf(\"Fail\\n\");\n}",
+        "explanation": "If marks is 60 or above, the first block runs and prints 'Pass'. Otherwise the else block runs and prints 'Fail'. The condition is evaluated at runtime."
+      }
+    ],
+    "masteryCheck": {
+      "question": "What will the above code print if marks = 45?",
+      "options": ["Pass", "Fail", "Nothing", "Compilation error"],
+      "correctIndex": 1,
+      "explanation": "Since 45 is less than 60, the condition (marks >= 60) evaluates to false. The else block executes and prints 'Fail'."
+    },
+    "flashcard": {
+      "front": "What is the syntax of an if-else statement in C?",
+      "back": "if (condition) { /* runs if true */ } else { /* runs if false */ }\nThe condition is any expression that evaluates to 0 (false) or non-zero (true)."
     }
   }
 ]

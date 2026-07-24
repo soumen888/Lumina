@@ -1,0 +1,24 @@
+# CODEOWNERS
+#
+# This file defines who is automatically requested to review Pull Requests.
+# Every PR opened against this repository will require approval from @soumen888
+# before it can be merged into main.
+#
+# Format: <file pattern> <GitHub username(s)>
+# Reference: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner — all files require review from maintainer
+* @soumen888
+
+# Flutter application — all Dart changes
+lumina/lib/ @soumen888
+
+# Python pipeline — extra care, touches live database
+scripts/ @soumen888
+
+# Firebase & credentials
+lumina/android/google-services.json @soumen888
+*.json @soumen888
+
+# GitHub configuration — no one can modify these without maintainer review
+.github/ @soumen888
