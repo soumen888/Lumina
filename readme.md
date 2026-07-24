@@ -23,18 +23,18 @@ By marrying the psychological hooks of short-form social media feeds (TikTok/Ins
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contributing & Community Roadmap
 
-This project is open to contributions. Whether you're into Flutter, Firebase, AI prompting, learning science, or just want to fix a typo — there's a place for you here.
+Lumina is an open community project. Whether you want to experiment with Flutter UI, refine AI prompt extraction, build learning algorithms, or suggest new features — everyone is welcome to contribute.
 
-**Current areas needing help most:**
-- 📱 Flutter UI polish & animations
-- 🧠 Spaced repetition (SM-2) engine implementation
-- 🤖 AI prompt engineering for better reel quality
-- 🐍 Stateless backend pipeline architecture
-- 📖 Documentation & onboarding improvements
+**Key focus areas on our roadmap:**
+- 📱 Flutter UI polish, reel scroll physics & glassmorphic design
+- 🧠 Spaced repetition (SM-2 algorithm) flashcard engine
+- 🤖 AI prompt engineering for higher-quality reels
+- 🐍 Stateless ingestion backend & CLI tools
+- 📖 Onboarding experience & documentation
 
-👉 **[Read CONTRIBUTING.md to get started](CONTRIBUTING.md)** · [Open an Issue](https://github.com/soumen888/Lumina/issues/new/choose)
+👉 **[Read CONTRIBUTING.md to get started](CONTRIBUTING.md)** · [Open an Issue / Feature Discussion](https://github.com/soumen888/Lumina/issues/new/choose)
 
 ---
 
